@@ -1,0 +1,124 @@
+@import "colors";
+@import "../node_modules/foundation-sites/scss/foundation.scss";
+
+.header {
+  .header-top {
+    background-color: map-get($grey, background);
+    a {
+      font-weight: 700;
+      color: map-get($grey, text);
+
+      &:hover {
+        color: darken(map-get($grey, text), 20%);
+      }
+    }
+  }
+
+  .language-selector {
+    margin: 0;
+    display: flex;
+
+    li {
+      a {
+        display: inline-block;
+        border-radius: 8px;
+        padding: 5px 7px;
+      }
+
+      &.active {
+        a {
+          background-color: map-get($accent, default);
+          color: #fff;
+        }
+      }
+
+      &::marker {
+        display: none;
+      }
+    }
+  }
+
+  .hamburger {
+    .header-menu {
+      @include hamburger;
+    }
+
+    .header-menu-container {
+      cursor: pointer;
+      display: inline-flex;
+      padding: 12px;
+      border-radius: 8px;
+
+      &:hover, &:active {
+        background-color: map-get($grey, separator);
+      }
+    }
+
+    .header-submenu {
+      position: fixed;
+      bottom: 0;
+      left: 8px;
+      right: 8px;
+      display: none;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin: 0;
+        background-color: #fff;
+        border-radius: 12px 12px 0 0;
+        padding: 64px 12px 12px;
+      }
+
+      li {
+        a {
+          display: block;
+          background-color: map-get($grey, background);
+          color: map-get($active, default);
+          padding: 7px 12px;
+          font-size: 24px;
+          font-weight: 700;
+          border-radius: 12px;
+          &:hover {
+            background-color: map-get($grey, separator);
+            color: map-get($active, default);
+          }
+
+          &.active {
+            color: map-get($accent, default);
+          }
+        }
+      }
+
+      &::before {
+        content: '';
+        position: fixed;
+        z-index: -1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: map-get($main, default);
+      }
+    }
+
+    input {
+      display: none;
+
+      &:checked ~ .header-submenu {
+        display: block;
+      }
+    }
+
+    .header-close-menu {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      background-color: #EC6F5D;
+      cursor: pointer;
+    }
+  }
+}
