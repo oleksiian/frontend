@@ -5,42 +5,48 @@
     <title>Header</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="./styles/sass.css">
+    <script src="https://kit.fontawesome.com/9136705dab.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="grid-container header">
-    <div class="grid-x grid-margin-x align-middle grid-padding-y header-top">
-        <div class="cell auto">
-            <ul class="language-selector no-bullet">
-                <li><a href="#">ук</a></li>
-                <li class="active"><a href="#">en</a></li>
-                <li><a href="#">it</a></li>
-            </ul>
-        </div>
-        <div class="cell auto text-right">
-            <a href="tel:0800 211 927">0800 211 927</a>
+<div class="header">
+    <div class="header-top header-reducer">
+        <ul class="language-selector no-bullet">
+            <li><a href="#">ук</a></li>
+            <li class="active"><a href="#">en</a></li>
+            <li><a href="#">it</a></li>
+        </ul>
+        <div class="hide-for-small-only header-top-item header-address">Kyiv, Mechnikova str., 14/1</div>
+        <a class="header-top-item" href="tel:0800 211 927">0800 211 927</a>
+        <a href="https://facebook.com" class="hide-for-small-only header-top-item header-facebook-icon"><i class="fa-brands fa-facebook"></i></a>
+    </div>
+    <div class="header-bottom header-reducer">
+        <div class="header-logo-box">
+            <div class="header-logo">
+                <img src="./icons/logo.svg" />
+                <span class="header-page-title">about us</span>
+            </div>
         </div>
     </div>
-    <div class="grid-x grid-margin-x grid-padding-y align-middle">
-        <div class="cell auto">logo</div>
-        <div class="cell auto text-right">
-            <div class="hamburger">
-                <input type="checkbox" id="menu" />
-                <div>
-                    <label class="header-menu-container" for="menu">
-                        <div class="header-menu"></div>
-                    </label>
-                </div>
-                <label class="header-submenu text-left" for="menu">
-                    <label class="header-close-menu" for="menu"></label>
-                    <ul class="text-center no-bullet">
-                        <li><a href="#" class="active">about as</a></li>
-                        <li><a href="#">послуги</a></li>
-                        <li><a href="#">команда</a></li>
-                        <li><a href="#">публікації</a></li>
-                        <li><a href="#">контакти</a></li>
-                    </ul>
+    <div class="header-nav text-right medium-text-left header-reducer">
+        <div class="hamburger">
+            <input type="checkbox" id="menu" />
+            <div class="show-for-small-only">
+                <label class="header-menu-container" for="menu">
+                    <div class="header-menu"></div>
                 </label>
             </div>
+            <label class="header-submenu show-for-medium hide-for-small-only" for="menu">
+                <label class="header-close-menu show-for-small-only" for="menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </label>
+                <ul class="text-center no-bullet align-left">
+                    <li><a href="#" class="active">about as</a></li>
+                    <li><a href="#">послуги</a></li>
+                    <li><a href="#">команда</a></li>
+                    <li><a href="#">публікації</a></li>
+                    <li><a href="#">контакти</a></li>
+                </ul>
+            </label>
         </div>
     </div>
 </div>

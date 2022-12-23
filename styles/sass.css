@@ -50,8 +50,91 @@ h1, .h1 {
     margin: 0 auto;
   }
 }
+.header {
+  background-color: #fff;
+  display: grid;
+  grid-template: [row1-start] "top top top" [row1-end] [row2-start] "middle middle middle" [row2-end] [row3-start] "bottom bottom bottom" [row3-end];
+}
+@media print, screen and (min-width: 64em) {
+  .header {
+    grid-template: [row1-start] "middle top" [row1-end] [row2-start] "middle bottom" [row2-end];
+    justify-content: space-between;
+  }
+}
+.header .header-reducer {
+  padding: 10px 15px;
+}
+.header .header-address {
+  font-weight: 400;
+  font-size: 16px;
+}
+.header .header-facebook-icon {
+  font-size: 24px;
+}
+.header .header-top-item {
+  position: relative;
+  padding-left: 12px;
+}
+.header .header-top-item ~ .header-top-item {
+  margin-left: 6px;
+}
+.header .header-top-item::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background-color: #E6E6F0;
+}
+.header .header-logo {
+  display: inline-flex;
+  height: 32px;
+}
+@media print, screen and (min-width: 40em) {
+  .header .header-logo {
+    height: initial;
+  }
+}
+.header .header-page-title {
+  display: flex;
+  font-size: 20px;
+  line-height: 1em;
+  font-weight: 400;
+  color: #323264;
+}
+.header .header-page-title::before {
+  content: "";
+  display: inline-block;
+  margin: 0 4px;
+  width: 12px;
+  height: 26px;
+  background: linear-gradient(105deg, transparent 45%, #F0145A 46%, #F0145A 61%, transparent 62%);
+}
+@media print, screen and (min-width: 40em) {
+  .header .header-page-title {
+    font-size: 36px;
+  }
+  .header .header-page-title::before {
+    width: 21px;
+    height: 47px;
+  }
+}
 .header .header-top {
+  grid-area: top;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #F5F5FA;
+}
+@media print, screen and (min-width: 40em) {
+  .header .header-top {
+    justify-content: left;
+    background-color: transparent;
+    list-style: disc;
+  }
 }
 .header .header-top a {
   font-weight: 700;
@@ -59,6 +142,16 @@ h1, .h1 {
 }
 .header .header-top a:hover {
   color: #7e7e89;
+}
+.header .header-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  grid-area: middle;
+}
+.header .header-logo-box {
+  display: flex;
+  align-items: center;
 }
 .header .language-selector {
   margin: 0;
@@ -75,6 +168,14 @@ h1, .h1 {
 }
 .header .language-selector li::marker {
   display: none;
+}
+.header .header-nav {
+  grid-area: middle;
+}
+@media print, screen and (min-width: 40em) {
+  .header .header-nav {
+    grid-area: bottom;
+  }
 }
 .header .hamburger .header-menu {
   position: relative;
@@ -113,21 +214,24 @@ h1, .h1 {
   bottom: 0;
   left: 8px;
   right: 8px;
-  display: none;
 }
 .header .hamburger .header-submenu ul {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  margin: 0;
   background-color: #fff;
-  border-radius: 12px 12px 0;
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 0;
   padding: 64px 12px 12px;
+}
+@media print, screen and (min-width: 64em) {
+  .header .hamburger .header-submenu ul {
+    justify-content: flex-end;
+  }
 }
 .header .hamburger .header-submenu li a {
   display: block;
   background-color: #F5F5FA;
-  color: #24A3FF;
   padding: 7px 12px;
   font-size: 24px;
   font-weight: 700;
@@ -140,6 +244,16 @@ h1, .h1 {
 .header .hamburger .header-submenu li a.active {
   color: #F0145A;
 }
+@media print, screen and (min-width: 40em) {
+  .header .hamburger .header-submenu li a {
+    padding: 0;
+    font-size: 16px;
+  }
+  .header .hamburger .header-submenu li a.active {
+    border-bottom: 2px solid #F0145A;
+    border-radius: 0;
+  }
+}
 .header .hamburger .header-submenu::before {
   content: "";
   position: fixed;
@@ -149,21 +263,42 @@ h1, .h1 {
   bottom: 0;
   left: 0;
   background-color: #323264;
+  opacity: 0.7;
+}
+@media print, screen and (min-width: 40em) {
+  .header .hamburger .header-submenu {
+    position: static;
+  }
+  .header .hamburger .header-submenu::before {
+    content: none;
+  }
+  .header .hamburger .header-submenu ul {
+    flex-direction: row;
+    padding: 0;
+    gap: 15px;
+  }
+  .header .hamburger .header-submenu ul a, .header .hamburger .header-submenu ul a:hover {
+    background-color: transparent;
+  }
 }
 .header .hamburger input {
   display: none;
 }
 .header .hamburger input:checked ~ .header-submenu {
-  display: block;
+  display: block !important;
 }
 .header .hamburger .header-close-menu {
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 20px;
-  height: 20px;
-  background-color: #EC6F5D;
+  width: 32px;
+  height: 32px;
+  color: #EC6F5D;
   cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */

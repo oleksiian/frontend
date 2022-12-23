@@ -2,8 +2,94 @@
 @import "../node_modules/foundation-sites/scss/foundation.scss";
 
 .header {
+  background-color: #fff;
+
+  display: grid;
+  grid-template:
+    [row1-start] "top top top" [row1-end]
+    [row2-start] "middle middle middle" [row2-end]
+    [row3-start] "bottom bottom bottom" [row3-end];
+
+  @include breakpoint(large) {
+    grid-template:
+    [row1-start] "middle top" [row1-end]
+    [row2-start] "middle bottom" [row2-end];
+    justify-content: space-between;
+  }
+  .header-reducer {
+    padding: 10px 15px;
+  }
+  .header-address {
+    font-weight: 400;
+    font-size: 16px;
+  }
+  .header-facebook-icon {
+    font-size: 24px;
+  }
+  .header-top-item {
+    position: relative;
+    padding-left: 12px;
+    & ~ .header-top-item {
+      margin-left: 6px;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background-color: map-get($grey, separator);
+    }
+  }
+  .header-logo {
+    display: inline-flex;
+    height: 32px;
+
+    @include breakpoint(medium) {
+      height: initial;
+    }
+  }
+
+  .header-page-title {
+    display: flex;
+    font-size: 20px;
+    line-height: 1em;
+    font-weight: 400;
+    color: map-get($main, default);
+
+    &::before {
+      content: '';
+      display: inline-block;
+      margin: 0 4px;
+      width: 12px;
+      height: 26px;
+      background: linear-gradient(105deg, transparent 45%, map-get($accent, default) 46%, map-get($accent, default) 61%, transparent 62%);
+    }
+
+    @include breakpoint(medium) {
+      font-size: 36px;
+      &::before {
+        width: 21px;
+        height: 47px;
+      }
+    }
+  }
+
   .header-top {
+    grid-area: top;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: map-get($grey, background);
+    @include breakpoint(medium) {
+      justify-content: left;
+      background-color: transparent;
+      list-style: disc;
+    }
+
     a {
       font-weight: 700;
       color: map-get($grey, text);
@@ -12,6 +98,18 @@
         color: darken(map-get($grey, text), 20%);
       }
     }
+  }
+
+  .header-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    grid-area: middle;
+  }
+
+  .header-logo-box {
+    display: flex;
+    align-items: center;
   }
 
   .language-selector {
@@ -38,6 +136,13 @@
     }
   }
 
+  .header-nav {
+    grid-area: middle;
+    @include breakpoint(medium) {
+      grid-area: bottom;
+    }
+  }
+
   .hamburger {
     .header-menu {
       @include hamburger;
@@ -59,23 +164,25 @@
       bottom: 0;
       left: 8px;
       right: 8px;
-      display: none;
 
       ul {
         display: flex;
         flex-direction: column;
         gap: 15px;
-        margin: 0;
         background-color: #fff;
         border-radius: 12px 12px 0 0;
+        margin-bottom: 0;
         padding: 64px 12px 12px;
+
+        @include breakpoint(large) {
+          justify-content: flex-end;
+        }
       }
 
       li {
         a {
           display: block;
           background-color: map-get($grey, background);
-          color: map-get($active, default);
           padding: 7px 12px;
           font-size: 24px;
           font-weight: 700;
@@ -87,6 +194,16 @@
 
           &.active {
             color: map-get($accent, default);
+          }
+
+          @include breakpoint(medium) {
+            padding: 0;
+            font-size: 16px;
+
+            &.active {
+              border-bottom: 2px solid map-get($accent, default);
+              border-radius: 0;
+            }
           }
         }
       }
@@ -100,6 +217,26 @@
         bottom: 0;
         left: 0;
         background-color: map-get($main, default);
+        opacity: 0.7;
+      }
+
+      @include breakpoint(medium) {
+        position: static;
+        &::before {
+          content: none;
+        }
+
+        ul {
+          flex-direction: row;
+          padding: 0;
+          gap: 15px;
+
+          a {
+            &, &:hover {
+              background-color: transparent;
+            }
+          }
+        }
       }
     }
 
@@ -107,7 +244,7 @@
       display: none;
 
       &:checked ~ .header-submenu {
-        display: block;
+        display: block !important;
       }
     }
 
@@ -115,10 +252,14 @@
       position: absolute;
       top: 10px;
       right: 10px;
-      width: 20px;
-      height: 20px;
-      background-color: #EC6F5D;
+      width: 32px;
+      height: 32px;
+      color: #EC6F5D;
       cursor: pointer;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
     }
   }
 }
