@@ -1,0 +1,28 @@
+@import "colors";
+
+.is-invalid-input:not(:focus) {
+  background-color: transparent;
+}
+
+input:disabled {
+  color: map-get($grey, text);
+}
+
+.button {
+  box-shadow: 0 0 20px rgba(map-get($active, default), 0.5);
+  border-radius: 12px;
+
+  &.is-progress {
+    @extend .spinner;
+    background-color: map-get($grey, background-alt);
+    box-shadow: none;
+    span {
+      display: none;
+    }
+  }
+}
+
+.send-message-form {
+  @include callout(map-get($grey, background));
+  background-color: map-get($grey, background);
+}

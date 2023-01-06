@@ -3,7 +3,8 @@
     "dev": "grunt"
   },
   "dependencies": {
-    "foundation-sites": "^6.7.5"
+    "foundation-sites": "^6.7.5",
+    "grunt-ejs": "^1.0.0"
   },
   "devDependencies": {
     "grunt": "^1.5.3",

@@ -880,6 +880,28 @@ $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
 
+$input-color: #000;
+$input-placeholder-color: map-get($grey, text);
+$input-padding: rem-calc(15px);
+$input-border: 1px solid transparent;
+$input-border-focus: 1px solid map-get($active, default);
+$input-shadow: none;
+$input-shadow-focus: none;
+$input-radius: 8px;
+$input-background-disabled: map-get($grey, background-alt);
+
+$button-background: map-get($active, default);
+$button-font-weight: 700;
+
+$button-sizes: (
+  tiny: 0.6rem,
+  small: 0.75rem,
+  default: 0.9rem,
+  large: 1.25rem,
+);
+
+$input-background-invalid: #FF0000;
+
 // 56. Xy Grid
 // -----------
 

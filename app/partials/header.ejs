@@ -1,0 +1,43 @@
+<% const languages = ['ук', 'en', 'it'] %>
+<% const pages = ['about us', 'послуги', 'команда', 'публікації', 'контакти'] %>
+
+<div class="<%= dark === 'так' ? 'header dark' : 'header' %>">
+    <div class="header-top header-reducer">
+        <ul class="language-selector no-bullet">
+            <% languages.forEach(lang => { %>
+                <li class="<%= language === lang ? 'active' : '' %>"><a href="#"><%= lang %></a></li>
+            <%}) %>
+        </ul>
+        <div class="hide-for-small-only header-top-item header-address">Kyiv, Mechnikova str., 14/1</div>
+        <a class="header-top-item" href="tel:0800 211 927">0800 211 927</a>
+        <a href="https://facebook.com" class="hide-for-small-only header-top-item header-facebook-icon"><i class="fa-brands fa-facebook"></i></a>
+    </div>
+    <div class="header-bottom header-reducer">
+        <div class="header-logo-box">
+            <div class="header-logo">
+                <img src="/icons/logo.svg" />
+                <span class="header-page-title"><%= page %></span>
+            </div>
+        </div>
+    </div>
+    <div class="header-nav text-right medium-text-left header-reducer">
+        <div class="hamburger">
+            <input type="checkbox" id="menu" />
+            <div class="show-for-small-only">
+                <label class="header-menu-container" for="menu">
+                    <div class="header-menu"></div>
+                </label>
+            </div>
+            <label class="header-submenu show-for-medium hide-for-small-only" for="menu">
+                <label class="header-close-menu show-for-small-only" for="menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </label>
+                <ul class="text-center no-bullet align-left">
+                    <% pages.forEach(p => { %>
+                        <li><a class="<%= page === p ? 'active' : '' %>" href="#"><%= p %></a></li>
+                    <%}) %>
+                </ul>
+            </label>
+        </div>
+    </div>
+</div>

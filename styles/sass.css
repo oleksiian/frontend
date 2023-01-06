@@ -301,6 +301,25 @@ h1, .h1 {
   justify-content: space-around;
 }
 
+.spinner::after, .button.is-progress::after {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 4px solid #24A3FF;
+  border-bottom-color: transparent;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 html {
   line-height: 1.15;
@@ -587,27 +606,27 @@ textarea {
   display: block;
   box-sizing: border-box;
   width: 100%;
-  height: 2.4375rem;
+  height: 3.3125rem;
   margin: 0 0 1rem;
-  padding: 0.5rem;
-  border: 1px solid #cacaca;
-  border-radius: 0;
+  padding: 0.9375rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
   background-color: #fefefe;
-  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  box-shadow: none;
   font-family: inherit;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
-  color: #0a0a0a;
+  color: #000;
   transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
   appearance: none;
 }
 [type=text]:focus, [type=password]:focus, [type=date]:focus, [type=datetime]:focus, [type=datetime-local]:focus, [type=month]:focus, [type=week]:focus, [type=email]:focus, [type=number]:focus, [type=search]:focus, [type=tel]:focus, [type=time]:focus, [type=url]:focus, [type=color]:focus,
 textarea:focus {
   outline: none;
-  border: 1px solid #8a8a8a;
+  border: 1px solid #24A3FF;
   background-color: #fefefe;
-  box-shadow: 0 0 5px #cacaca;
+  box-shadow: none;
   transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 }
 
@@ -621,7 +640,7 @@ textarea[rows] {
 input:disabled, input[readonly],
 textarea:disabled,
 textarea[readonly] {
-  background-color: #e6e6e6;
+  background-color: #EDEDF7;
   cursor: not-allowed;
 }
 
@@ -636,7 +655,7 @@ input[type=search] {
 }
 
 ::placeholder {
-  color: #cacaca;
+  color: #B3B3BA;
 }
 
 [type=file],
@@ -695,10 +714,10 @@ label.middle {
   align-items: stretch;
 }
 .input-group > :first-child, .input-group > :first-child.input-group-button > * {
-  border-radius: 0 0 0 0;
+  border-radius: 8px 0 0 8px;
 }
 .input-group > :last-child, .input-group > :last-child.input-group-button > * {
-  border-radius: 0 0 0 0;
+  border-radius: 0 8px 8px 0;
 }
 
 .input-group-button a,
@@ -774,18 +793,18 @@ legend {
 }
 
 select {
-  height: 2.4375rem;
+  height: 3.3125rem;
   margin: 0 0 1rem;
-  padding: 0.5rem;
+  padding: 0.9375rem;
   appearance: none;
-  border: 1px solid #cacaca;
+  border: 1px solid transparent;
   border-radius: 0;
   background-color: #fefefe;
   font-family: inherit;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
-  color: #0a0a0a;
+  color: #000;
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: rgb%28138, 138, 138%29"></polygon></svg>');
   background-origin: content-box;
   background-position: right -1rem center;
@@ -801,13 +820,13 @@ select {
 }
 select:focus {
   outline: none;
-  border: 1px solid #8a8a8a;
+  border: 1px solid #24A3FF;
   background-color: #fefefe;
-  box-shadow: 0 0 5px #cacaca;
+  box-shadow: none;
   transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 }
 select:disabled {
-  background-color: #e6e6e6;
+  background-color: #EDEDF7;
   cursor: not-allowed;
 }
 select::-ms-expand {
@@ -823,11 +842,11 @@ select:not([multiple]) {
 }
 
 .is-invalid-input:not(:focus) {
-  border-color: #cc4b37;
-  background-color: #f9ecea;
+  border-color: #FF0000;
+  background-color: #fee5e5;
 }
 .is-invalid-input:not(:focus)::placeholder {
-  color: #cc4b37;
+  color: #FF0000;
 }
 
 .is-invalid-label {
@@ -3299,6 +3318,7 @@ ul.no-bullet, ol.no-bullet {
   transition: background-color 0.25s ease-out, color 0.25s ease-out;
   font-family: inherit;
   font-size: 0.9rem;
+  font-weight: 700;
   -webkit-appearance: none;
   line-height: 1;
   text-align: center;
@@ -3323,7 +3343,7 @@ ul.no-bullet, ol.no-bullet {
   margin-left: 0;
 }
 .button, .button.disabled, .button[disabled], .button.disabled:hover, .button[disabled]:hover, .button.disabled:focus, .button[disabled]:focus {
-  background-color: #1779ba;
+  background-color: #24A3FF;
   color: #fefefe;
 }
 .button:hover, .button:focus {
@@ -3374,12 +3394,12 @@ ul.no-bullet, ol.no-bullet {
   background-color: transparent;
 }
 .button.hollow, .button.hollow.disabled, .button.hollow[disabled], .button.hollow.disabled:hover, .button.hollow[disabled]:hover, .button.hollow.disabled:focus, .button.hollow[disabled]:focus {
-  border: 1px solid #1779ba;
-  color: #1779ba;
+  border: 1px solid #24A3FF;
+  color: #24A3FF;
 }
 .button.hollow:hover, .button.hollow:focus {
-  border-color: #0c3d5d;
-  color: #0c3d5d;
+  border-color: #005492;
+  color: #005492;
 }
 .button.hollow.primary, .button.hollow.primary.disabled, .button.hollow.primary[disabled], .button.hollow.primary.disabled:hover, .button.hollow.primary[disabled]:hover, .button.hollow.primary.disabled:focus, .button.hollow.primary[disabled]:focus {
   border: 1px solid #1779ba;
@@ -3426,10 +3446,10 @@ ul.no-bullet, ol.no-bullet {
   background-color: transparent;
 }
 .button.clear, .button.clear.disabled, .button.clear[disabled], .button.clear.disabled:hover, .button.clear[disabled]:hover, .button.clear.disabled:focus, .button.clear[disabled]:focus {
-  color: #1779ba;
+  color: #24A3FF;
 }
 .button.clear:hover, .button.clear:focus {
-  color: #0c3d5d;
+  color: #005492;
 }
 .button.clear.primary, .button.clear.primary.disabled, .button.clear.primary[disabled], .button.clear.primary.disabled:hover, .button.clear.primary[disabled]:hover, .button.clear.primary.disabled:focus, .button.clear.primary[disabled]:focus {
   color: #1779ba;
@@ -3481,7 +3501,7 @@ ul.no-bullet, ol.no-bullet {
   margin-left: 1em;
 }
 .button.dropdown.hollow::after, .button.dropdown.clear::after {
-  border-top-color: #1779ba;
+  border-top-color: #24A3FF;
 }
 .button.dropdown.hollow.primary::after, .button.dropdown.clear.primary::after {
   border-top-color: #1779ba;
@@ -3593,12 +3613,12 @@ a.button:hover, a.button:focus {
   background-color: transparent;
 }
 .button-group.hollow .button, .button-group.hollow .button.disabled, .button-group.hollow .button[disabled], .button-group.hollow .button.disabled:hover, .button-group.hollow .button[disabled]:hover, .button-group.hollow .button.disabled:focus, .button-group.hollow .button[disabled]:focus {
-  border: 1px solid #1779ba;
-  color: #1779ba;
+  border: 1px solid #24A3FF;
+  color: #24A3FF;
 }
 .button-group.hollow .button:hover, .button-group.hollow .button:focus {
-  border-color: #0c3d5d;
-  color: #0c3d5d;
+  border-color: #005492;
+  color: #005492;
 }
 .button-group.hollow.primary .button, .button-group.hollow.primary .button.disabled, .button-group.hollow.primary .button[disabled], .button-group.hollow.primary .button.disabled:hover, .button-group.hollow.primary .button[disabled]:hover, .button-group.hollow.primary .button.disabled:focus, .button-group.hollow.primary .button[disabled]:focus, .button-group.hollow .button.primary, .button-group.hollow .button.primary.disabled, .button-group.hollow .button.primary[disabled], .button-group.hollow .button.primary.disabled:hover, .button-group.hollow .button.primary[disabled]:hover, .button-group.hollow .button.primary.disabled:focus, .button-group.hollow .button.primary[disabled]:focus {
   border: 1px solid #1779ba;
@@ -3645,10 +3665,10 @@ a.button:hover, a.button:focus {
   background-color: transparent;
 }
 .button-group.clear .button, .button-group.clear .button.disabled, .button-group.clear .button[disabled], .button-group.clear .button.disabled:hover, .button-group.clear .button[disabled]:hover, .button-group.clear .button.disabled:focus, .button-group.clear .button[disabled]:focus {
-  color: #1779ba;
+  color: #24A3FF;
 }
 .button-group.clear .button:hover, .button-group.clear .button:focus {
-  color: #0c3d5d;
+  color: #005492;
 }
 .button-group.clear.primary .button, .button-group.clear.primary .button.disabled, .button-group.clear.primary .button[disabled], .button-group.clear.primary .button.disabled:hover, .button-group.clear.primary .button[disabled]:hover, .button-group.clear.primary .button.disabled:focus, .button-group.clear.primary .button[disabled]:focus, .button-group.clear .button.primary, .button-group.clear .button.primary.disabled, .button-group.clear .button.primary[disabled], .button-group.clear .button.primary.disabled:hover, .button-group.clear .button.primary[disabled]:hover, .button-group.clear .button.primary.disabled:focus, .button-group.clear .button.primary[disabled]:focus {
   color: #1779ba;
@@ -6597,6 +6617,43 @@ html.is-reveal-open body {
 
 .is-stuck .hide-for-sticky {
   display: none;
+}
+
+.is-invalid-input:not(:focus) {
+  background-color: transparent;
+}
+
+input:disabled {
+  color: #B3B3BA;
+}
+
+.button {
+  box-shadow: 0 0 20px rgba(36, 163, 255, 0.5);
+  border-radius: 12px;
+}
+.button.is-progress {
+  background-color: #EDEDF7;
+  box-shadow: none;
+}
+.button.is-progress span {
+  display: none;
+}
+
+.send-message-form {
+  position: relative;
+  margin: 0 0 1rem 0;
+  padding: 1rem;
+  border: 1px solid rgba(10, 10, 10, 0.25);
+  border-radius: 0;
+  background-color: #fefefe;
+  color: #0a0a0a;
+  background-color: #F5F5FA;
+}
+.send-message-form > :first-child {
+  margin-top: 0;
+}
+.send-message-form > :last-child {
+  margin-bottom: 0;
 }
 
 /*# sourceMappingURL=sass.css.map */
